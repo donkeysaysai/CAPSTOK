@@ -251,6 +251,9 @@ body {
   color: var(--color-text);
   margin-bottom: 1.5rem;
   line-height: 1.1;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (min-width: 640px) {

@@ -3,11 +3,11 @@ import "@/App.css";
 
 function App() {
   const [isAdminMode, setIsAdminMode] = useState(false);
-  const [keySequence, setKeySequence] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const [toastType, setToastType] = useState('');
   const [showToast, setShowToast] = useState(false);
+  const keySequenceRef = useRef('');
   const keyTimerRef = useRef(null);
   const adminCode = '1990';
 
@@ -22,54 +22,51 @@ function App() {
     }, 4000);
   }, []);
 
-  // Toggle admin mode
-  const toggleAdminMode = useCallback(() => {
-    setIsAdminMode(prev => {
-      const newMode = !prev;
-      if (newMode) {
-        displayToast('Bewerkingsmodus geactiveerd! Klik op tekst om te bewerken.', 'info');
-      } else {
-        displayToast('Bewerkingsmodus afgesloten.', 'info');
-      }
-      return newMode;
-    });
-  }, [displayToast]);
-
-  // Key sequence detection
+  // Key sequence detection for admin mode
   useEffect(() => {
     const handleKeyDown = (e) => {
+      // Only listen for number keys
       if (!/^[0-9]$/.test(e.key)) {
-        setKeySequence('');
+        keySequenceRef.current = '';
         return;
       }
 
+      // Clear previous timer
       if (keyTimerRef.current) {
         clearTimeout(keyTimerRef.current);
       }
 
-      setKeySequence(prev => {
-        const newSequence = prev + e.key;
-        
-        keyTimerRef.current = setTimeout(() => {
-          setKeySequence('');
-        }, 2000);
+      // Add key to sequence
+      keySequenceRef.current += e.key;
 
-        if (newSequence === adminCode) {
-          toggleAdminMode();
-          return '';
-        }
+      // Set timer to reset sequence after 2 seconds
+      keyTimerRef.current = setTimeout(() => {
+        keySequenceRef.current = '';
+      }, 2000);
 
-        if (newSequence.length >= adminCode.length && newSequence !== adminCode) {
-          return newSequence.slice(-adminCode.length);
-        }
+      // Check if sequence matches admin code
+      if (keySequenceRef.current === adminCode) {
+        setIsAdminMode(prev => {
+          const newMode = !prev;
+          if (newMode) {
+            displayToast('Bewerkingsmodus geactiveerd! Klik op tekst om te bewerken.', 'info');
+          } else {
+            displayToast('Bewerkingsmodus afgesloten.', 'info');
+          }
+          return newMode;
+        });
+        keySequenceRef.current = '';
+      }
 
-        return newSequence;
-      });
+      // Trim sequence if it gets too long
+      if (keySequenceRef.current.length > adminCode.length) {
+        keySequenceRef.current = keySequenceRef.current.slice(-adminCode.length);
+      }
     };
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [toggleAdminMode]);
+  }, [displayToast]);
 
   // Copy HTML to clipboard
   const copyHtmlToClipboard = async () => {
@@ -175,7 +172,7 @@ function App() {
         
         <div className="hero-content">
           <EditableText className="hero-label" testId="hero-label">De Slimme Oplossing voor Helmen</EditableText>
-          <EditableText as="h1" className="hero-title" testId="hero-title">Welcome to a<br/>safer future</EditableText>
+          <EditableText as="h1" className="hero-title" testId="hero-title">Welcome to a safer future</EditableText>
           <EditableText className="hero-subtitle" testId="hero-subtitle">Het verantwoord opbergen van je helm verlaagt risico's op de werkvloer. Orde en netheid zijn tekenen van goed vakmanschap.</EditableText>
           <div className="hero-buttons">
             <a href="#producten" onClick={(e) => handleSmoothScroll(e, '#producten')} className="btn-primary" data-testid="hero-cta-products">
