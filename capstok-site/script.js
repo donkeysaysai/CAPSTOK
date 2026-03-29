@@ -8,7 +8,7 @@
     let isAdminMode = false;
     let keySequence = '';
     const adminCode = '1990';
-    const keyTimeout = 2000; // Reset sequence after 2 seconds
+    const keyTimeout = 2000;
     let keyTimer = null;
 
     // DOM Elements
@@ -19,18 +19,19 @@
     const exitAdminBtn = document.getElementById('exitAdminMode');
     const toast = document.getElementById('toast');
     const toastMessage = document.getElementById('toastMessage');
+    const toastIcon = document.getElementById('toastIcon');
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
+    const navbar = document.getElementById('navbar');
     const editableElements = document.querySelectorAll('.editable');
 
     // Mobile Menu Toggle
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', function() {
             mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('show');
             
             const icon = mobileMenuBtn.querySelector('i');
-            if (mobileMenu.classList.contains('show')) {
+            if (!mobileMenu.classList.contains('hidden')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
             } else {
@@ -43,7 +44,6 @@
         mobileMenu.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function() {
                 mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('show');
                 const icon = mobileMenuBtn.querySelector('i');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
@@ -95,8 +95,8 @@
             keySequence = '';
         }
 
-        // Reset if sequence is longer than code
-        if (keySequence.length >= adminCode.length && keySequence !== adminCode) {
+        // Trim sequence if too long
+        if (keySequence.length > adminCode.length) {
             keySequence = keySequence.slice(-adminCode.length);
         }
     });
@@ -116,7 +116,7 @@
     function enableAdminMode() {
         body.classList.add('admin-mode');
         adminBanner.classList.remove('hidden');
-        adminBanner.style.display = 'block';
+        adminBanner.style.display = 'flex';
         adminControls.classList.remove('hidden');
         adminControls.style.display = 'block';
 
@@ -125,8 +125,8 @@
             el.setAttribute('contenteditable', 'true');
         });
 
-        // Adjust body padding for admin banner
-        document.getElementById('navbar').style.top = '40px';
+        // Adjust navbar for admin banner
+        navbar.style.top = '48px';
 
         showToast('Bewerkingsmodus geactiveerd! Klik op tekst om te bewerken.', 'info');
     }
@@ -145,7 +145,7 @@
         });
 
         // Reset navbar position
-        document.getElementById('navbar').style.top = '0';
+        navbar.style.top = '0';
 
         showToast('Bewerkingsmodus afgesloten.', 'info');
     }
@@ -169,10 +169,10 @@
 
     // Copy HTML to Clipboard
     function copyHtmlToClipboard() {
-        // First, remove admin-mode specific attributes for clean export
+        // Create a clean copy without admin-mode specific elements
         const tempBody = body.cloneNode(true);
         
-        // Remove admin mode classes and styles
+        // Remove admin mode classes
         tempBody.classList.remove('admin-mode');
         
         // Remove contenteditable attributes
@@ -185,11 +185,20 @@
         const adminControlsClone = tempBody.querySelector('#adminControls');
         const toastClone = tempBody.querySelector('#toast');
         
-        if (adminBannerClone) adminBannerClone.style.display = 'none';
-        if (adminControlsClone) adminControlsClone.style.display = 'none';
-        if (toastClone) toastClone.style.display = 'none';
+        if (adminBannerClone) {
+            adminBannerClone.style.display = 'none';
+            adminBannerClone.classList.add('hidden');
+        }
+        if (adminControlsClone) {
+            adminControlsClone.style.display = 'none';
+            adminControlsClone.classList.add('hidden');
+        }
+        if (toastClone) {
+            toastClone.style.display = 'none';
+            toastClone.classList.add('hidden');
+        }
 
-        // Reset navbar position in clone
+        // Reset navbar position
         const navbarClone = tempBody.querySelector('#navbar');
         if (navbarClone) navbarClone.style.top = '0';
 
@@ -205,12 +214,11 @@
         navigator.clipboard.writeText(fullHtml).then(function() {
             showToast('HTML succesvol gekopieerd naar klembord! Plak dit in je GitHub repository.', 'success');
         }).catch(function(err) {
-            // Fallback for older browsers
             fallbackCopyToClipboard(fullHtml);
         });
     }
 
-    // Fallback copy method for older browsers
+    // Fallback copy method
     function fallbackCopyToClipboard(text) {
         const textArea = document.createElement('textarea');
         textArea.value = text;
@@ -241,38 +249,45 @@
 
         toastMessage.textContent = message;
         
-        // Set color based on type
-        toast.className = 'fixed bottom-6 left-6 z-50 px-6 py-4 flex items-center space-x-3 shadow-2xl toast-enter';
+        // Reset classes
+        toast.className = 'fixed bottom-6 left-6 z-50 px-6 py-4 flex items-center space-x-3 shadow-2xl';
         
+        // Set color and icon based on type
         switch(type) {
             case 'success':
                 toast.classList.add('bg-green-500', 'text-white');
+                if (toastIcon) {
+                    toastIcon.className = 'fas fa-check-circle text-xl';
+                }
                 break;
             case 'error':
                 toast.classList.add('bg-red-500', 'text-white');
+                if (toastIcon) {
+                    toastIcon.className = 'fas fa-exclamation-circle text-xl';
+                }
                 break;
             case 'info':
             default:
                 toast.classList.add('bg-capstok-yellow', 'text-capstok-dark');
+                if (toastIcon) {
+                    toastIcon.className = 'fas fa-info-circle text-xl';
+                }
                 break;
         }
 
         toast.style.display = 'flex';
+        toast.style.animation = 'slideIn 0.3s ease forwards';
 
         // Auto-hide after 4 seconds
         setTimeout(function() {
-            toast.classList.remove('toast-enter');
-            toast.classList.add('toast-exit');
-            
+            toast.style.animation = 'slideOut 0.3s ease forwards';
             setTimeout(function() {
                 toast.style.display = 'none';
-                toast.classList.remove('toast-exit');
             }, 300);
         }, 4000);
     }
 
     // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
     let lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', function() {

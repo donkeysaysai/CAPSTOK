@@ -48,15 +48,7 @@ section[id] {
     animation: bounce 2s infinite;
 }
 
-/* Toast animation */
-.toast-enter {
-    animation: slideIn 0.3s ease forwards;
-}
-
-.toast-exit {
-    animation: slideOut 0.3s ease forwards;
-}
-
+/* Toast animations */
 @keyframes slideIn {
     from {
         transform: translateX(-100%);
@@ -77,22 +69,6 @@ section[id] {
         transform: translateX(-100%);
         opacity: 0;
     }
-}
-
-/* Mobile menu animation */
-#mobileMenu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-}
-
-#mobileMenu.show {
-    max-height: 300px;
-}
-
-/* Image hover effects */
-.group:hover img {
-    transform: scale(1.05);
 }
 
 /* Focus styles for accessibility */
@@ -118,7 +94,8 @@ img {
     nav,
     #adminBanner,
     #adminControls,
-    #toast {
+    #toast,
+    .animate-bounce {
         display: none !important;
     }
     
