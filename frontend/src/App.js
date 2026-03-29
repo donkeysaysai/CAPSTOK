@@ -171,7 +171,7 @@ function App() {
         </div>
         
         <div className="hero-content">
-          <EditableText className="hero-label" testId="hero-label">De Slimme Oplossing voor Helmen</EditableText>
+          <EditableText className="hero-label" testId="hero-label">&nbsp;</EditableText>
           <EditableText as="h1" className="hero-title" testId="hero-title">Welcome to a safer future</EditableText>
           <EditableText className="hero-subtitle" testId="hero-subtitle">Het verantwoord opbergen van je helm verlaagt risico's op de werkvloer. Orde en netheid zijn tekenen van goed vakmanschap.</EditableText>
           <div className="hero-buttons">
@@ -278,25 +278,7 @@ function App() {
             </div>
           </div>
           
-          {/* USPs */}
-          <div className="usps-grid">
-            <div className="usp" data-testid="usp-shipping">
-              <i className="fas fa-truck"></i>
-              <EditableText>Gratis verzending<br/>vanaf €50</EditableText>
-            </div>
-            <div className="usp" data-testid="usp-payment">
-              <i className="fas fa-lock"></i>
-              <EditableText>Veilig betalen<br/>via iDEAL</EditableText>
-            </div>
-            <div className="usp" data-testid="usp-quality">
-              <i className="fas fa-award"></i>
-              <EditableText>Hoge kwaliteit<br/>materialen</EditableText>
-            </div>
-            <div className="usp" data-testid="usp-dutch">
-              <i className="fas fa-flag"></i>
-              <EditableText>Nederlands<br/>product</EditableText>
-            </div>
-          </div>
+          {/* USPs removed */}
         </div>
       </section>
 
@@ -310,7 +292,6 @@ function App() {
                 src="https://customer-assets.emergentagent.com/job_capstok-preview/artifacts/49kaiftr_Capstok_op_achtergrond.png" 
                 alt="Industrial Worker" 
               />
-              <div className="about-image-accent"></div>
             </div>
             
             {/* Content */}
