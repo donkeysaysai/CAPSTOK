@@ -164,7 +164,7 @@ function App() {
       <section id="hero" className="hero-section" data-testid="hero-section">
         <div className="hero-background">
           <img 
-            src="https://images.unsplash.com/photo-1766736259614-61ac882294c5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwyfHxjb25zdHJ1Y3Rpb24lMjBzYWZldHklMjBoZWxtZXQlMjBpbmR1c3RyaWFsfGVufDB8fHx8MTc3NDc4MDAyOXww&ixlib=rb-4.1.0&q=85" 
+            src="https://customer-assets.emergentagent.com/job_capstok-preview/artifacts/9hn6dlvw_home_Met_logo_2.jpg" 
             alt="Industrial Safety Background" 
           />
           <div className="hero-overlay"></div>
@@ -241,7 +241,7 @@ function App() {
             <div className="product-card" data-testid="product-white">
               <div className="product-image">
                 <img 
-                  src="https://static.prod-images.emergentagent.com/jobs/7ca9e7e7-3aca-46d1-abd9-0168272dac0e/images/934718b982b88ef08ce67219cb2155988e8ceb56bf2c1a53a63c85c0827d60bc.png" 
+                  src="https://customer-assets.emergentagent.com/job_capstok-preview/artifacts/7a8x3p3v_Capstok_Wit-transformed.jpg" 
                   alt="CAPSTOK Wit" 
                 />
               </div>
@@ -261,7 +261,7 @@ function App() {
             <div className="product-card" data-testid="product-black">
               <div className="product-image">
                 <img 
-                  src="https://static.prod-images.emergentagent.com/jobs/7ca9e7e7-3aca-46d1-abd9-0168272dac0e/images/04cb977158a8041884148702cde71a7a9b4b08803b621b8074b657ea153fd262.png" 
+                  src="https://customer-assets.emergentagent.com/job_capstok-preview/artifacts/ipnnh8am_Capstok_Zwart-transformed.jpg" 
                   alt="CAPSTOK Zwart" 
                 />
               </div>
