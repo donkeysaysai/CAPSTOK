@@ -171,7 +171,6 @@ function App() {
         </div>
         
         <div className="hero-content">
-          <EditableText className="hero-label" testId="hero-label">&nbsp;</EditableText>
           <EditableText as="h1" className="hero-title" testId="hero-title">Welcome to a safer future</EditableText>
           <EditableText className="hero-subtitle" testId="hero-subtitle">Het verantwoord opbergen van je helm verlaagt risico's op de werkvloer. Orde en netheid zijn tekenen van goed vakmanschap.</EditableText>
           <div className="hero-buttons">
