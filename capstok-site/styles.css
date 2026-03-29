@@ -1,0 +1,135 @@
+/* Custom styles for Capstok */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Remove default button styles */
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* Admin mode styles */
+.admin-mode .editable {
+    outline: 2px dashed #facc15;
+    outline-offset: 4px;
+    cursor: text;
+    transition: outline-color 0.2s ease;
+}
+
+.admin-mode .editable:hover {
+    outline-color: #fde047;
+}
+
+.admin-mode .editable:focus {
+    outline: 2px solid #facc15;
+    background-color: rgba(250, 204, 21, 0.1);
+}
+
+/* Offset for fixed header */
+section[id] {
+    scroll-margin-top: 80px;
+}
+
+/* Animation for hero scroll indicator */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    50% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+}
+
+.animate-bounce {
+    animation: bounce 2s infinite;
+}
+
+/* Toast animation */
+.toast-enter {
+    animation: slideIn 0.3s ease forwards;
+}
+
+.toast-exit {
+    animation: slideOut 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+/* Mobile menu animation */
+#mobileMenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+#mobileMenu.show {
+    max-height: 300px;
+}
+
+/* Image hover effects */
+.group:hover img {
+    transform: scale(1.05);
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #facc15;
+    outline-offset: 2px;
+}
+
+/* Selection styling */
+::selection {
+    background-color: #facc15;
+    color: #09090b;
+}
+
+/* Loading state for images */
+img {
+    background-color: #27272a;
+}
+
+/* Print styles */
+@media print {
+    nav,
+    #adminBanner,
+    #adminControls,
+    #toast {
+        display: none !important;
+    }
+    
+    section {
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .admin-mode .editable {
+        outline-offset: 2px;
+    }
+}

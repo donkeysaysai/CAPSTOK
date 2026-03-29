@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CAPSTOK - De slimme oplossing voor het veilig opbergen van uw bouwhelm. Orde en veiligheid op de werkvloer.">
+    <title>Capstok - Welcome to a safer future</title>
+    <link rel="icon" type="image/jpeg" href="https://customer-assets.emergentagent.com/job_capstok-preview/artifacts/tht5tji5_Capstok%20Favicon.jpg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'heading': ['Outfit', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'capstok-yellow': '#facc15',
+                        'capstok-dark': '#09090b',
+                        'capstok-surface': '#18181b',
+                        'capstok-border': '#27272a',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-body bg-capstok-dark text-zinc-50 antialiased">
+    
+    <!-- Admin Mode Banner -->
+    <div id="adminBanner" class="fixed top-0 left-0 right-0 z-[100] bg-capstok-yellow text-capstok-dark py-2 px-4 text-center font-semibold hidden">
+        <i class="fas fa-edit mr-2"></i>
+        BEWERKINGSMODUS ACTIEF - Klik op tekst om te bewerken
+        <button id="exitAdminMode" class="ml-4 px-3 py-1 bg-capstok-dark text-white text-sm uppercase tracking-wider hover:bg-zinc-800" data-testid="exit-admin-btn">
+            Afsluiten
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-capstok-dark/95 backdrop-blur-sm border-b border-capstok-border">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex-shrink-0" data-testid="logo-link">
+                    <img src="https://customer-assets.emergentagent.com/job_capstok-preview/artifacts/l5ta1mn4_Capstok%20wit%20onder%20slogan.png" alt="Capstok Logo" class="h-12 w-auto">
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#waarom" class="nav-link text-sm font-semibold tracking-wider text-zinc-400 hover:text-capstok-yellow transition-colors uppercase" data-testid="nav-waarom">Waarom Capstok</a>
+                    <a href="#producten" class="nav-link text-sm font-semibold tracking-wider text-zinc-400 hover:text-capstok-yellow transition-colors uppercase" data-testid="nav-producten">Producten</a>
+                    <a href="#over-ons" class="nav-link text-sm font-semibold tracking-wider text-zinc-400 hover:text-capstok-yellow transition-colors uppercase" data-testid="nav-over-ons">Over Ons</a>
+                    <a href="#contact" class="nav-link text-sm font-semibold tracking-wider text-zinc-400 hover:text-capstok-yellow transition-colors uppercase" data-testid="nav-contact">Contact</a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button id="mobileMenuBtn" class="md:hidden text-zinc-400 hover:text-capstok-yellow" data-testid="mobile-menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-capstok-surface border-t border-capstok-border">
+            <div class="px-6 py-4 space-y-4">
+                <a href="#waarom" class="block text-sm font-semibold tracking-wider text-zinc-400 hover:text-capstok-yellow transition-colors uppercase" data-testid="mobile-nav-waarom">Waarom Capstok</a>
+                <a href="#producten" class="block text-sm font-semibold tracking-wider text-zinc-400 hover:text-capstok-yellow transition-colors uppercase" data-testid="mobile-nav-producten">Producten</a>
+                <a href="#over-ons" class="block text-sm font-semibold tracking-wider text-zinc-400 hover:text-capstok-yellow transition-colors uppercase" data-testid="mobile-nav-over-ons">Over Ons</a>
+                <a href="#contact" class="block text-sm font-semibold tracking-wider text-zinc-400 hover:text-capstok-yellow transition-colors uppercase" data-testid="mobile-nav-contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1766736259614-61ac882294c5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwyfHxjb25zdHJ1Y3Rpb24lMjBzYWZldHklMjBoZWxtZXQlMjBpbmR1c3RyaWFsfGVufDB8fHx8MTc3NDc4MDAyOXww&ixlib=rb-4.1.0&q=85" alt="Industrial Safety Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-capstok-dark/80"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 text-center">
+            <p class="editable text-sm font-bold uppercase tracking-[0.2em] text-capstok-yellow mb-6" data-testid="hero-label">De Slimme Oplossing voor Helmen</p>
+            <h1 class="editable font-heading text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-zinc-50 uppercase mb-6" data-testid="hero-title">Welcome to a<br>safer future</h1>
+            <p class="editable text-lg sm:text-xl text-zinc-300 max-w-2xl mx-auto mb-10" data-testid="hero-subtitle">Het verantwoord opbergen van je helm verlaagt risico's op de werkvloer. Orde en netheid zijn tekenen van goed vakmanschap.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#producten" class="inline-flex items-center justify-center px-8 py-4 bg-capstok-yellow text-capstok-dark font-bold uppercase tracking-wider hover:bg-yellow-500 transition-colors duration-200" data-testid="hero-cta-products">
+                    Bekijk Producten
+                </a>
+                <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-zinc-50 text-zinc-50 font-bold uppercase tracking-wider hover:bg-zinc-50 hover:text-capstok-dark transition-colors duration-200" data-testid="hero-cta-contact">
+                    Neem Contact Op
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-capstok-yellow text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Waarom Capstok Section -->
+    <section id="waarom" class="py-24 sm:py-32 bg-capstok-dark">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <p class="editable text-sm font-bold uppercase tracking-[0.2em] text-capstok-yellow mb-4" data-testid="why-label">Waarom Kiezen</p>
+                <h2 class="editable font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-50 uppercase" data-testid="why-title">Waarom CAPSTOK</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Feature 1: Veiligheid -->
+                <div class="bg-capstok-surface border border-capstok-border p-8 hover:border-capstok-yellow transition-colors duration-200 group" data-testid="feature-safety">
+                    <div class="w-16 h-16 bg-capstok-yellow/10 flex items-center justify-center mb-6 group-hover:bg-capstok-yellow/20 transition-colors">
+                        <i class="fas fa-shield-halved text-3xl text-capstok-yellow"></i>
+                    </div>
+                    <h3 class="editable font-heading text-xl sm:text-2xl font-semibold tracking-tight text-zinc-50 mb-4">Veiligheid Voorop</h3>
+                    <p class="editable text-base text-zinc-400 leading-relaxed">Het verantwoord opbergen van je helm verlaagt risico's op de werkvloer. Geen helm meer op de grond of op onveilige plekken.</p>
+                </div>
+                
+                <!-- Feature 2: Orde -->
+                <div class="bg-capstok-surface border border-capstok-border p-8 hover:border-capstok-yellow transition-colors duration-200 group" data-testid="feature-order">
+                    <div class="w-16 h-16 bg-capstok-yellow/10 flex items-center justify-center mb-6 group-hover:bg-capstok-yellow/20 transition-colors">
+                        <i class="fas fa-layer-group text-3xl text-capstok-yellow"></i>
+                    </div>
+                    <h3 class="editable font-heading text-xl sm:text-2xl font-semibold tracking-tight text-zinc-50 mb-4">Orde & Netheid</h3>
+                    <p class="editable text-base text-zinc-400 leading-relaxed">Orde en netheid zijn tekenen van goed vakmanschap. Met CAPSTOK laat je zien dat je professioneel te werk gaat.</p>
+                </div>
+                
+                <!-- Feature 3: Vakmanschap -->
+                <div class="bg-capstok-surface border border-capstok-border p-8 hover:border-capstok-yellow transition-colors duration-200 group" data-testid="feature-craftsmanship">
+                    <div class="w-16 h-16 bg-capstok-yellow/10 flex items-center justify-center mb-6 group-hover:bg-capstok-yellow/20 transition-colors">
+                        <i class="fas fa-hard-hat text-3xl text-capstok-yellow"></i>
+                    </div>
+                    <h3 class="editable font-heading text-xl sm:text-2xl font-semibold tracking-tight text-zinc-50 mb-4">Vakmanschap</h3>
+                    <p class="editable text-base text-zinc-400 leading-relaxed">Laat uw helm niet meer slingeren. Met Uw CAPSTOK toont u respect voor uw gereedschap en uw vak.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="producten" class="py-24 sm:py-32 bg-capstok-surface">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <p class="editable text-sm font-bold uppercase tracking-[0.2em] text-capstok-yellow mb-4" data-testid="products-label">Onze Producten</p>
+                <h2 class="editable font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-50 uppercase" data-testid="products-title">Uw CAPSTOK</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+                <!-- Product 1: White -->
+                <div class="bg-capstok-dark border border-capstok-border overflow-hidden group hover:border-capstok-yellow transition-colors duration-200" data-testid="product-white">
+                    <div class="aspect-square overflow-hidden bg-zinc-900">
+                        <img src="https://static.prod-images.emergentagent.com/jobs/7ca9e7e7-3aca-46d1-abd9-0168272dac0e/images/934718b982b88ef08ce67219cb2155988e8ceb56bf2c1a53a63c85c0827d60bc.png" alt="CAPSTOK Wit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="editable font-heading text-2xl font-bold text-zinc-50 mb-2">CAPSTOK Wit</h3>
+                        <p class="editable text-zinc-400 mb-4">De perfecte helmhouder in stijlvol wit. Past bij elke werkplaats of kantoor.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="editable text-3xl font-bold text-capstok-yellow" data-testid="price-white">€16,99</span>
+                            <a href="mailto:info@capstok.nl?subject=Bestelling CAPSTOK Wit" class="inline-flex items-center text-sm font-semibold text-zinc-50 hover:text-capstok-yellow transition-colors" data-testid="order-white">
+                                Bestel Nu <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2: Black -->
+                <div class="bg-capstok-dark border border-capstok-border overflow-hidden group hover:border-capstok-yellow transition-colors duration-200" data-testid="product-black">
+                    <div class="aspect-square overflow-hidden bg-zinc-900">
+                        <img src="https://static.prod-images.emergentagent.com/jobs/7ca9e7e7-3aca-46d1-abd9-0168272dac0e/images/04cb977158a8041884148702cde71a7a9b4b08803b621b8074b657ea153fd262.png" alt="CAPSTOK Zwart" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="editable font-heading text-2xl font-bold text-zinc-50 mb-2">CAPSTOK Zwart</h3>
+                        <p class="editable text-zinc-400 mb-4">De perfecte helmhouder in elegant zwart. Tijdloos en professioneel.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="editable text-3xl font-bold text-capstok-yellow" data-testid="price-black">€16,99</span>
+                            <a href="mailto:info@capstok.nl?subject=Bestelling CAPSTOK Zwart" class="inline-flex items-center text-sm font-semibold text-zinc-50 hover:text-capstok-yellow transition-colors" data-testid="order-black">
+                                Bestel Nu <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- USPs -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">
+                <div class="flex flex-col items-center" data-testid="usp-shipping">
+                    <i class="fas fa-truck text-2xl text-capstok-yellow mb-3"></i>
+                    <p class="editable text-sm text-zinc-400">Gratis verzending<br>vanaf €50</p>
+                </div>
+                <div class="flex flex-col items-center" data-testid="usp-payment">
+                    <i class="fas fa-lock text-2xl text-capstok-yellow mb-3"></i>
+                    <p class="editable text-sm text-zinc-400">Veilig betalen<br>via iDEAL</p>
+                </div>
+                <div class="flex flex-col items-center" data-testid="usp-quality">
+                    <i class="fas fa-award text-2xl text-capstok-yellow mb-3"></i>
+                    <p class="editable text-sm text-zinc-400">Hoge kwaliteit<br>materialen</p>
+                </div>
+                <div class="flex flex-col items-center" data-testid="usp-dutch">
+                    <i class="fas fa-flag text-2xl text-capstok-yellow mb-3"></i>
+                    <p class="editable text-sm text-zinc-400">Nederlands<br>product</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Over Ons Section -->
+    <section id="over-ons" class="py-24 sm:py-32 bg-capstok-dark">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Image -->
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/16368424/pexels-photo-16368424.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Industrial Worker" class="w-full aspect-[4/3] object-cover">
+                    <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-capstok-yellow"></div>
+                </div>
+                
+                <!-- Content -->
+                <div>
+                    <p class="editable text-sm font-bold uppercase tracking-[0.2em] text-capstok-yellow mb-4" data-testid="about-label">Ons Verhaal</p>
+                    <h2 class="editable font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-50 uppercase mb-6" data-testid="about-title">Over CAPSTOK</h2>
+                    <div class="space-y-4 text-zinc-400">
+                        <p class="editable" data-testid="about-text-1">CAPSTOK is ontstaan uit een simpele observatie: op veel werkplekken slingeren helmen rond, wat leidt tot onveilige situaties en een rommelige uitstraling.</p>
+                        <p class="editable" data-testid="about-text-2">Wij geloven dat veiligheid en professionaliteit hand in hand gaan. Met onze slimme helmhouder bieden we een praktische oplossing die past bij elke werkplaats - van bouwplaatsen tot fabrieken.</p>
+                        <p class="editable" data-testid="about-text-3">Onze missie is simpel: bijdragen aan een veiligere en meer georganiseerde werkomgeving, één helm tegelijk.</p>
+                    </div>
+                    <div class="mt-8 flex items-center space-x-8">
+                        <div data-testid="stat-customers">
+                            <span class="editable block text-4xl font-bold text-capstok-yellow">500+</span>
+                            <span class="editable text-sm text-zinc-400">Tevreden klanten</span>
+                        </div>
+                        <div data-testid="stat-workplaces">
+                            <span class="editable block text-4xl font-bold text-capstok-yellow">100+</span>
+                            <span class="editable text-sm text-zinc-400">Werkplaatsen</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 sm:py-32 bg-capstok-surface">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <p class="editable text-sm font-bold uppercase tracking-[0.2em] text-capstok-yellow mb-4" data-testid="contact-label">Neem Contact Op</p>
+                <h2 class="editable font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-50 uppercase" data-testid="contact-title">Contact</h2>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Email -->
+                    <a href="mailto:info@capstok.nl" class="bg-capstok-dark border border-capstok-border p-8 hover:border-capstok-yellow transition-colors duration-200 flex items-center space-x-6 group" data-testid="contact-email-link">
+                        <div class="w-16 h-16 bg-capstok-yellow/10 flex items-center justify-center flex-shrink-0 group-hover:bg-capstok-yellow/20 transition-colors">
+                            <i class="fas fa-envelope text-2xl text-capstok-yellow"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-zinc-400 mb-1">E-mail</p>
+                            <p class="editable text-lg font-semibold text-zinc-50 group-hover:text-capstok-yellow transition-colors">info@capstok.nl</p>
+                        </div>
+                    </a>
+                    
+                    <!-- Phone -->
+                    <a href="tel:+31681140979" class="bg-capstok-dark border border-capstok-border p-8 hover:border-capstok-yellow transition-colors duration-200 flex items-center space-x-6 group" data-testid="contact-phone-link">
+                        <div class="w-16 h-16 bg-capstok-yellow/10 flex items-center justify-center flex-shrink-0 group-hover:bg-capstok-yellow/20 transition-colors">
+                            <i class="fas fa-phone text-2xl text-capstok-yellow"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-zinc-400 mb-1">Telefoon</p>
+                            <p class="editable text-lg font-semibold text-zinc-50 group-hover:text-capstok-yellow transition-colors">+31 6 81140979</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <p class="editable text-center text-zinc-400 mt-8" data-testid="contact-cta">Heeft u vragen over onze producten of wilt u een bestelling plaatsen? Neem gerust contact met ons op!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-capstok-dark border-t border-capstok-border">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+                <!-- Logo -->
+                <img src="https://customer-assets.emergentagent.com/job_capstok-preview/artifacts/l5ta1mn4_Capstok%20wit%20onder%20slogan.png" alt="Capstok Logo" class="h-10 w-auto">
+                
+                <!-- Links -->
+                <div class="flex items-center space-x-8">
+                    <a href="#waarom" class="text-sm text-zinc-400 hover:text-capstok-yellow transition-colors" data-testid="footer-link-waarom">Waarom Capstok</a>
+                    <a href="#producten" class="text-sm text-zinc-400 hover:text-capstok-yellow transition-colors" data-testid="footer-link-producten">Producten</a>
+                    <a href="#contact" class="text-sm text-zinc-400 hover:text-capstok-yellow transition-colors" data-testid="footer-link-contact">Contact</a>
+                </div>
+                
+                <!-- Copyright -->
+                <p class="editable text-sm text-zinc-500" data-testid="footer-copyright">© 2024 Capstok. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Admin Mode Floating Button -->
+    <div id="adminControls" class="fixed bottom-6 right-6 z-50 hidden">
+        <button id="copyHtmlBtn" class="flex items-center space-x-3 px-6 py-4 bg-capstok-yellow text-capstok-dark font-bold uppercase tracking-wider hover:bg-yellow-500 transition-colors duration-200 shadow-2xl" data-testid="copy-html-btn">
+            <i class="fas fa-copy text-xl"></i>
+            <span>Wijzigingen Opslaan (Kopieer HTML)</span>
+        </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 left-6 z-50 bg-green-500 text-white px-6 py-4 hidden items-center space-x-3 shadow-2xl">
+        <i class="fas fa-check-circle text-xl"></i>
+        <span id="toastMessage">HTML gekopieerd naar klembord!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
