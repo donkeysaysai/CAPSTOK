@@ -1,0 +1,84 @@
+{
+  "theme": "dark",
+  "archetype": "4 - Swiss & High-Contrast (Industrial Dark Variant)",
+  "colors": {
+    "background": "bg-zinc-950",
+    "surface": "bg-zinc-900",
+    "surface_hover": "hover:bg-zinc-800",
+    "border": "border-zinc-800",
+    "border_hover": "hover:border-yellow-400",
+    "primary": "bg-yellow-400",
+    "primary_hover": "hover:bg-yellow-500",
+    "primary_text": "text-yellow-400",
+    "text_main": "text-zinc-50",
+    "text_muted": "text-zinc-400",
+    "text_inverse": "text-zinc-950"
+  },
+  "typography": {
+    "font_headings": "Outfit, sans-serif",
+    "font_body": "Inter, sans-serif",
+    "h1": "text-5xl sm:text-6xl font-bold tracking-tight text-zinc-50 uppercase",
+    "h2": "text-3xl sm:text-4xl font-bold tracking-tight text-zinc-50 uppercase",
+    "h3": "text-xl sm:text-2xl font-semibold tracking-tight text-zinc-50",
+    "body": "text-base text-zinc-400 leading-relaxed",
+    "label": "text-sm font-bold uppercase tracking-[0.2em] text-yellow-400"
+  },
+  "spacing_and_layout": {
+    "section_padding": "py-24 sm:py-32",
+    "container": "max-w-7xl mx-auto px-6 sm:px-8",
+    "grid_bento": "grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8",
+    "radius": "rounded-none"
+  },
+  "components": {
+    "button_primary": "inline-flex items-center justify-center px-8 py-4 bg-yellow-400 text-zinc-950 font-bold uppercase tracking-wider hover:bg-yellow-500 transition-colors duration-200",
+    "button_secondary": "inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-zinc-50 text-zinc-50 font-bold uppercase tracking-wider hover:bg-zinc-50 hover:text-zinc-950 transition-colors duration-200",
+    "card": "bg-zinc-900 border border-zinc-800 p-8 hover:border-zinc-700 transition-colors duration-200",
+    "nav_link": "text-sm font-semibold tracking-wider text-zinc-400 hover:text-yellow-400 transition-colors uppercase"
+  },
+  "media": {
+    "logo_main": {
+      "url": "https://customer-assets.emergentagent.com/job_capstok-preview/artifacts/l5ta1mn4_Capstok%20wit%20onder%20slogan.png",
+      "description": "Capstok Main Logo",
+      "category": "header, footer"
+    },
+    "favicon": {
+      "url": "https://customer-assets.emergentagent.com/job_capstok-preview/artifacts/tht5tji5_Capstok%20Favicon.jpg",
+      "description": "Capstok Favicon",
+      "category": "head"
+    },
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1552879890-3a06dd3a06c2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2ODh8MHwxfHNlYXJjaHwyfHxpbmR1c3RyaWFsJTIwc2FmZXR5fGVufDB8fHx8MTc3NDc3OTk2OHww&ixlib=rb-4.1.0&q=85",
+      "description": "A rack filled with yellow hard hats, representing construction safety and order.",
+      "category": "hero"
+    },
+    "why_capstok_image": {
+      "url": "https://images.pexels.com/photos/16368424/pexels-photo-16368424.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Industrial worker in safety gear.",
+      "category": "about, why_capstok"
+    },
+    "product_white": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/7ca9e7e7-3aca-46d1-abd9-0168272dac0e/images/934718b982b88ef08ce67219cb2155988e8ceb56bf2c1a53a63c85c0827d60bc.png",
+      "description": "White CAPSTOK mounted on concrete.",
+      "category": "product"
+    },
+    "product_black": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/7ca9e7e7-3aca-46d1-abd9-0168272dac0e/images/04cb977158a8041884148702cde71a7a9b4b08803b621b8074b657ea153fd262.png",
+      "description": "Black CAPSTOK mounted on concrete.",
+      "category": "product"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Use raw HTML/Tailwind classes for sections (Hero, About, Products), minimizing Shadcn generic usage for unique marketing layouts. Do not use border-radius (rounded-none everywhere) to maintain the brutalist industrial look.",
+    "Implement a custom React Hook or useEffect to listen for the key sequence '1990'.",
+    "When '1990' is typed consecutively, toggle a state `isAdminMode`. When true, display a fixed 'Copy HTML' button at the bottom right. Also apply `contentEditable={isAdminMode}` to all text-bearing elements (h1, h2, p, span, etc.).",
+    "For the 'Copy HTML' functionality, you can copy `document.documentElement.outerHTML` or a specific wrapper div to the clipboard.",
+    "The header should be sticky with a solid background (`bg-zinc-950`) or heavily blurred to ensure text visibility. Include the logo (use max-h-12).",
+    "The Hero section must use `hero_background` image with a dark overlay (`bg-zinc-950/80` or `bg-zinc-950/70`) so the white slogan text 'Welcome to a safer future' pops out.",
+    "Product section should showcase both the White and Black CAPSTOK side-by-side or stacked, highlighting the price (€16,99), materials, and use-case (hard hats). Do NOT include a shopping cart, just product information.",
+    "Sections needed: Hero, Why CAPSTOK (Features: Safety, Order, Craftsmanship), Product Showcase, About Us, Contact, Footer.",
+    "Contact info to display: info@capstok.nl, +316 81140979.",
+    "Ensure the entire design is responsive (Mobile first) and uses generous padding (`py-24`).",
+    "Use Lucide-react or Phosphor icons for features (e.g., HardHat icon, ShieldCheck, Ruler).",
+    "All interactive elements MUST include a `data-testid` attribute (e.g., `data-testid=\"contact-email-link\"`)."
+  ]
+}
