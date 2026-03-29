@@ -307,7 +307,7 @@ function App() {
             {/* Image */}
             <div className="about-image">
               <img 
-                src="https://images.pexels.com/photos/16368424/pexels-photo-16368424.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
+                src="https://customer-assets.emergentagent.com/job_capstok-preview/artifacts/49kaiftr_Capstok_op_achtergrond.png" 
                 alt="Industrial Worker" 
               />
               <div className="about-image-accent"></div>
