@@ -325,7 +325,7 @@ function App() {
             <EditableText as="h2" className="section-title" testId="contact-title">Contact</EditableText>
           </div>
           
-          <div className="contact-grid">
+          <div className="contact-grid single">
             {/* Email */}
             <a href="mailto:info@capstok.nl" className="contact-card" data-testid="contact-email-link">
               <div className="contact-icon">
@@ -334,17 +334,6 @@ function App() {
               <div className="contact-info">
                 <span className="contact-label">E-mail</span>
                 <EditableText className="contact-value">info@capstok.nl</EditableText>
-              </div>
-            </a>
-            
-            {/* Phone */}
-            <a href="tel:+31681140979" className="contact-card" data-testid="contact-phone-link">
-              <div className="contact-icon">
-                <i className="fas fa-phone"></i>
-              </div>
-              <div className="contact-info">
-                <span className="contact-label">Telefoon</span>
-                <EditableText className="contact-value">+31 6 81140979</EditableText>
               </div>
             </a>
           </div>

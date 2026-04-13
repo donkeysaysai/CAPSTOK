@@ -682,18 +682,14 @@ body {
 }
 
 /* Contact Section */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  max-width: 48rem;
-  margin: 0 auto;
+.contact-grid.single {
+  display: flex;
+  justify-content: center;
 }
 
-@media (min-width: 768px) {
-  .contact-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.contact-grid.single .contact-card {
+  max-width: 400px;
+  width: 100%;
 }
 
 .contact-card {
